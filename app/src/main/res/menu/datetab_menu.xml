@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/dateWeek"
+        android:title="Week"
+        android:padding="0dp"
+        app:showAsAction="always"
+        app:actionLayout="@layout/custom_menu_layout"/>
+
+    <item
+        android:id="@+id/dateMonth"
+        android:title="Month"
+        app:showAsAction="never"
+        app:actionLayout="@layout/custom_menu_layout"/>
+
+    <item
+        android:id="@+id/dateYear"
+        android:title="Year"
+        app:showAsAction="never"
+        app:actionLayout="@layout/custom_menu_layout"/>
+</menu>

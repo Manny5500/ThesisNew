@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingTop="15dp"
+    android:paddingBottom="15dp"
+    android:background="@color/white"
+    android:layout_marginTop="2dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <TextView
+        android:layout_marginStart="5dp"
+        android:id="@+id/rankSA"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:textSize="18sp"
+        app:layout_constraintHorizontal_weight="1"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/nameSA"/>
+
+    <TextView
+        android:id="@+id/nameSA"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:textSize="18sp"
+        app:layout_constraintHorizontal_weight="5"
+        app:layout_constraintTop_toTopOf="@id/rankSA"
+        app:layout_constraintStart_toEndOf="@id/rankSA"
+        app:layout_constraintEnd_toStartOf="@id/totalSA"/>
+
+    <TextView
+        android:id="@+id/totalSA"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:textSize="18sp"
+        android:gravity="right"
+        app:layout_constraintHorizontal_weight="3"
+        app:layout_constraintTop_toTopOf="@id/nameSA"
+        app:layout_constraintEnd_toStartOf="@id/pbarSA"
+        app:layout_constraintStart_toEndOf="@id/nameSA"/>
+
+    <ProgressBar
+        android:layout_marginStart="10dp"
+        android:id="@+id/pbarSA"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:progress="0"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_weight="3"
+        app:layout_constraintStart_toEndOf="@id/totalSA"
+        android:progressTint="@color/themeup"
+        app:layout_constraintTop_toTopOf="@id/totalSA"
+        app:layout_constraintBottom_toBottomOf="@id/rankSA"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

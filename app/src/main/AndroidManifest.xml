@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <uses-feature
+        android:name="android.hardware.telephony"
+        android:required="false" />
+    <uses-feature
+        android:name="android.hardware.camera"
+        android:required="false" />
+
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.CALL_PHONE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <application
+        android:allowBackup="true"
+        android:dataExtractionRules="@xml/data_extraction_rules"
+        android:fullBackupContent="@xml/backup_rules"
+        android:icon="@drawable/nutriassist_logo"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:screenOrientation="portrait"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.MyApplication"
+        tools:targetApi="31">
+        <activity
+            android:name=".ParentChildrenActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ValidateEmail"
+            android:exported="false" />
+        <activity
+            android:name=".PMEdit"
+            android:exported="false" />
+        <activity
+            android:name=".ProgressMonitoringBNS"
+            android:exported="false" />
+        <activity
+            android:name=".ActivityPriority"
+            android:exported="false" />
+        <activity
+            android:name=".ReportsSelector"
+            android:exported="false" />
+        <activity
+            android:name=".SummaryReport"
+            android:exported="false" />
+        <activity
+            android:name=".TestAlg"
+            android:exported="false" />
+        <activity
+            android:name=".FPList"
+            android:exported="false" />
+        <activity
+            android:name=".GSBList"
+            android:exported="false" />
+        <activity
+            android:name=".VulnerableFamily"
+            android:exported="false" />
+        <activity
+            android:name=".FamilyList"
+            android:exported="false" />
+        <activity
+            android:name=".AddParentData"
+            android:exported="false" />
+        <activity
+            android:name=".SearchParent"
+            android:exported="false" />
+        <activity
+            android:name=".AddDataWithParent"
+            android:exported="false" />
+        <activity
+            android:name=".SplashScreen"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".barangayAnalytics"
+            android:exported="false" />
+        <activity
+            android:name=".ProgressMonitoring"
+            android:exported="false" />
+        <activity
+            android:name=".casesCharts"
+            android:exported="false" />
+        <activity
+            android:name=".agesCharts"
+            android:exported="false" />
+        <activity
+            android:name=".genderCharts"
+            android:exported="false" />
+        <activity
+            android:name=".Prevailance_Reports"
+            android:exported="false" />
+        <activity
+            android:name=".Malnourished_List"
+            android:exported="false" />
+        <activity
+            android:name=".RecommendationAdmin"
+            android:exported="false" />
+        <activity
+            android:name=".UMEdit"
+            android:exported="false" />
+        <activity
+            android:name=".CameraTests"
+            android:exported="false" />
+        <activity
+            android:name=".Recommendation"
+            android:exported="false" />
+        <activity
+            android:name=".EditChild"
+            android:exported="false" />
+        <activity
+            android:name=".PriorityClicked"
+            android:exported="false" />
+        <activity
+            android:name=".ParentActivity"
+            android:exported="false" />
+        <activity
+            android:name=".PersonnelActivity"
+            android:exported="false"
+            android:windowSoftInputMode="adjustNothing" />
+        <activity
+            android:name=".AdminActivity"
+            android:exported="false"
+            android:windowSoftInputMode="adjustNothing" />
+        <activity
+            android:name=".Register"
+            android:exported="false" />
+        <activity
+            android:name=".Login"
+            android:exported="true" />
+        <activity
+            android:name=".MainActivity"
+            android:exported="true" />
+    </application>
+
+</manifest>

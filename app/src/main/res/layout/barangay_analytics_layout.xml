@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingTop="15dp"
+    android:paddingBottom="15dp"
+    android:paddingStart="5dp"
+    android:paddingEnd="5dp"
+    android:background="@color/white"
+    android:layout_marginTop="2dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <TextView
+        android:id="@+id/rankBA"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:textSize="18sp"
+        app:layout_constraintHorizontal_weight="1"
+        android:layout_marginStart="5dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/sitioRecycler"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/nameBA"/>
+
+    <TextView
+        android:id="@+id/nameBA"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:textSize="18sp"
+        app:layout_constraintHorizontal_weight="5"
+        app:layout_constraintTop_toTopOf="@id/rankBA"
+        app:layout_constraintStart_toEndOf="@id/rankBA"
+        app:layout_constraintEnd_toStartOf="@id/totalBA"/>
+
+    <TextView
+        android:id="@+id/totalBA"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:textSize="18sp"
+        app:layout_constraintHorizontal_weight="3"
+        android:gravity="right"
+        app:layout_constraintTop_toTopOf="@id/nameBA"
+        app:layout_constraintEnd_toStartOf="@id/pbarBA"
+        app:layout_constraintStart_toEndOf="@id/nameBA"/>
+
+    <ProgressBar
+        android:layout_marginStart="10dp"
+        android:id="@+id/pbarBA"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:progress="0"
+        app:layout_constraintBottom_toBottomOf="@+id/rankBA"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_weight="3"
+        app:layout_constraintStart_toEndOf="@id/totalBA"
+        android:progressTint="@color/blueColor"
+        app:layout_constraintTop_toTopOf="@id/totalBA" />
+
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/sitioRecycler"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="0dp"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        app:layout_constraintTop_toBottomOf="@id/rankBA"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.526"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintVertical_bias="0.157" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

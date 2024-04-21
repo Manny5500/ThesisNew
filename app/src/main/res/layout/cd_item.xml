@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    style="@style/Widget.Material3.CardView.Elevated"
+    android:backgroundTint="@color/white"
+    app:cardCornerRadius="15sp"
+    app:cardElevation="10sp"
+    android:layout_margin="4sp">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_width="0dp"
+            app:layout_constraintHorizontal_weight="5.5"
+            android:layout_height="match_parent"
+            android:id="@+id/textContainer"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/btnEdit">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="18sp"
+                android:textColor="?attr/colorPrimary"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintBottom_toTopOf="@id/list_item_barangay"
+                android:id="@+id/list_item_name"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@id/list_item_name"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintBottom_toTopOf="@id/list_item_bio"
+                android:id="@+id/list_item_barangay"/>
+
+            <TextView
+                android:layout_width = "match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/list_item_bio"
+                app:layout_constraintTop_toBottomOf="@id/list_item_barangay"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <ImageButton
+            android:id="@+id/btnEdit"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:background="@drawable/rounded_corner_button"
+            android:backgroundTint="@color/greenColor2"
+            android:src="@drawable/editing"
+            app:layout_constraintHorizontal_weight="1"
+            android:scaleType="centerInside"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@id/textContainer"
+            app:layout_constraintEnd_toStartOf="@id/btnDelete"
+            android:padding="8dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginBottom="16dp"
+            android:layout_marginEnd="4dp"/>
+        <ImageButton
+            android:id="@+id/btnDelete"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            app:layout_constraintBottom_toBottomOf="@id/btnEdit"
+            android:src="@drawable/trashcan"
+            android:backgroundTint="@color/redColor"
+            android:background="@drawable/rounded_corner_button"
+            app:layout_constraintHorizontal_weight="1"
+            android:scaleType="centerInside"
+            app:layout_constraintTop_toTopOf="@id/btnEdit"
+            app:layout_constraintStart_toEndOf="@id/btnEdit"
+            app:layout_constraintEnd_toStartOf="@id/btnProgress"
+            android:layout_marginStart="4dp"
+            android:layout_marginEnd="4dp"
+            android:padding="8dp"/>
+        <ImageButton
+            android:id="@+id/btnProgress"
+            android:background="@drawable/rounded_corner_button"
+            android:backgroundTint="@color/viola"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            app:layout_constraintBottom_toBottomOf="@id/btnDelete"
+            app:layout_constraintHorizontal_weight="1"
+            android:src="@drawable/graphic_progression__1_"
+            android:scaleType="centerInside"
+            app:layout_constraintTop_toTopOf="@id/btnDelete"
+            app:layout_constraintStart_toEndOf="@id/btnDelete"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="4dp"
+            android:padding="8dp"/>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</com.google.android.material.card.MaterialCardView>

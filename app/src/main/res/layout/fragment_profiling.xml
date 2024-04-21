@@ -1,0 +1,747 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@drawable/nutriassist_bg_"
+    tools:context=".FragmentProfiling">
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/barangayView"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="5dp"
+            app:layout_constraintVertical_weight="1"
+            app:cardBackgroundColor="@color/blueColor"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/topView"
+            app:cardCornerRadius="15sp">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/txViews"
+                    android:layout_width="0dp"
+                    android:layout_marginEnd="5dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginBottom="10dp"
+                    app:layout_constraintHorizontal_weight="3.5"
+                    android:layout_height="match_parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toStartOf="@id/imgViews">
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        app:layout_constraintVertical_weight="0.5"
+                        android:id="@+id/textDateLayout"
+                        app:layout_constraintBottom_toTopOf="@id/barText"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent">
+
+                        <TextView
+                            android:id="@+id/dateText"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            app:layout_constraintHorizontal_weight="9"
+                            android:text="Date"
+                            android:textStyle="bold"
+                            android:textColor="@color/white"
+                            app:layout_constraintTop_toBottomOf="@id/textDateLayout"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintEnd_toStartOf="@id/dateMenu">
+                        </TextView>
+                        <ImageView
+                            android:src="@drawable/more"
+                            android:id="@+id/dateMenu"
+                            app:tint="@color/white"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            app:layout_constraintHorizontal_weight="1"
+                            app:layout_constraintStart_toEndOf="@id/dateText"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintTop_toTopOf="@id/dateText">
+                        </ImageView>
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    <TextView
+                        android:id="@+id/barText"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        app:layout_constraintVertical_weight="1"
+                        android:textSize="22sp"
+                        android:text="Barangay"
+                        android:textStyle="bold"
+                        android:textColor="@color/white"
+                        app:layout_constraintTop_toBottomOf="@id/textDateLayout"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintBottom_toTopOf="@id/namText">
+                    </TextView>
+                    <TextView
+                        android:id="@+id/namText"
+                        app:layout_constraintVertical_weight="1.5"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:textSize="28sp"
+                        android:text="..."
+                        android:textStyle="bold"
+                        android:textColor="@color/white"
+                        app:layout_constraintTop_toBottomOf="@id/barText"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent">
+                    </TextView>
+                </androidx.constraintlayout.widget.ConstraintLayout>
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@+id/imgViews"
+                    android:layout_width="0dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginEnd="10dp"
+                    android:layout_marginBottom="10dp"
+                    app:layout_constraintHorizontal_weight="1.5"
+                    android:layout_marginStart="5dp"
+                    android:layout_height="match_parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/txViews"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:civ_border_color="@color/white"
+                    app:civ_border_width="3dp"
+                    android:src="@drawable/house">
+                </de.hdodenhof.circleimageview.CircleImageView>
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/topView"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginBottom="5dp"
+            app:layout_constraintVertical_weight="2.5"
+            app:layout_constraintTop_toBottomOf="@+id/barangayView"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/bottomView">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/lTView"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginEnd="5dp"
+                app:layout_constraintVertical_weight="2.5"
+                app:layout_constraintHorizontal_weight="1"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/rTView"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent">
+
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/polView"
+                    android:layout_width="match_parent"
+                    android:layout_marginBottom="5dp"
+                    android:layout_height="0dp"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintBottom_toTopOf="@id/chilView"
+                    app:cardCornerRadius="15sp">
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:background="@color/white"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:id="@+id/polHead"
+                            android:layout_width="match_parent"
+                            android:background="@color/blueColor"
+                            app:layout_constraintVertical_weight="1.5"
+                            android:layout_height="0dp"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintBottom_toTopOf="@id/polBod"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent">
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:gravity="center"
+                                android:text="Population"
+                                android:textStyle="bold"
+                                android:textSize="18sp"
+                                android:textColor="@color/white"
+                                app:layout_constraintTop_toTopOf="parent"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintEnd_toEndOf="parent">
+                            </TextView>
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+
+                        <TextView
+                            android:id="@+id/polBod"
+                            android:layout_width="match_parent"
+                            android:layout_height="0dp"
+                            app:layout_constraintVertical_weight="2.5"
+                            android:text="..."
+                            android:textStyle="bold"
+                            android:textSize="25sp"
+                            android:gravity="center"
+                            app:layout_constraintTop_toBottomOf="@id/polHead"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintBottom_toBottomOf="parent">
+
+                        </TextView>
+
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+                </com.google.android.material.card.MaterialCardView>
+
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/chilView"
+                    android:layout_width="match_parent"
+                    android:layout_marginTop="5dp"
+                    android:layout_height="0dp"
+                    app:layout_constraintTop_toBottomOf="@id/polView"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:cardCornerRadius="15sp">
+
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:background="@color/white"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:id="@+id/chilHead"
+                            android:layout_width="match_parent"
+                            android:background="@color/blueColor"
+                            app:layout_constraintVertical_weight="1.5"
+                            android:layout_height="0dp"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintBottom_toTopOf="@id/chilBod"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent">
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:gravity="center"
+                                android:text="Child"
+                                android:textStyle="bold"
+                                android:textSize="18sp"
+                                android:textColor="@color/white"
+                                app:layout_constraintTop_toTopOf="parent"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintEnd_toEndOf="parent">
+                            </TextView>
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+
+                        <TextView
+                            android:id="@+id/chilBod"
+                            android:layout_width="match_parent"
+                            android:layout_height="0dp"
+                            app:layout_constraintVertical_weight="2.5"
+                            android:text="..."
+                            android:textStyle="bold"
+                            android:textSize="25sp"
+                            android:gravity="center"
+                            app:layout_constraintTop_toBottomOf="@id/chilHead"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintBottom_toBottomOf="parent">
+                        </TextView>
+
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+                </com.google.android.material.card.MaterialCardView>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/rTView"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginStart="5dp"
+                app:layout_constraintHorizontal_weight="2"
+                app:layout_constraintVertical_weight="1"
+                app:cardBackgroundColor="@color/blueColor"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toEndOf="@id/lTView"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:cardCornerRadius="15sp">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:background="@color/white"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/rTHead"
+                        android:layout_width="match_parent"
+                        android:background="@color/blueColor"
+                        app:layout_constraintVertical_weight="1.5"
+                        android:layout_height="0dp"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintBottom_toTopOf="@id/rTBod"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:gravity="center"
+                            android:text="Normal vs Malnourished"
+                            android:textStyle="bold"
+                            android:textSize="20sp"
+                            android:textColor="@color/white"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent">
+                        </TextView>
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                        <com.github.mikephil.charting.charts.PieChart
+                            android:id="@+id/rTBod"
+                            android:layout_width="match_parent"
+                            android:layout_height="0dp"
+                            app:layout_constraintVertical_weight="5.5"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@id/rTHead"
+                            app:layout_constraintBottom_toBottomOf="parent"/>
+
+
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/bottomView"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginEnd="30dp"
+            android:layout_marginStart="30dp"
+            android:layout_marginBottom="10dp"
+            app:layout_constraintVertical_weight="3"
+            app:layout_constraintTop_toBottomOf="@+id/topView"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/uDView"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_marginBottom="8dp"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintBottom_toTopOf="@id/dDView">
+
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/falView"
+                    android:layout_marginEnd="8dp"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    app:cardBackgroundColor="@color/panel4"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toStartOf="@id/vulView"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:cardCornerRadius="15sp">
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:id="@+id/falHead"
+                            android:layout_width="match_parent"
+                            app:layout_constraintVertical_weight="2"
+                            android:layout_height="0dp"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintBottom_toTopOf="@id/falBod"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent">
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:gravity="center"
+                                android:text="Families"
+                                android:textStyle="bold"
+                                android:textSize="20sp"
+                                android:textColor="@color/white"
+                                app:layout_constraintTop_toTopOf="parent"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintEnd_toEndOf="parent">
+                            </TextView>
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:id="@+id/falBod"
+                            android:layout_width="match_parent"
+                            app:layout_constraintVertical_weight="4"
+                            android:layout_height="0dp"
+                            app:layout_constraintTop_toBottomOf="@id/falHead"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent">
+
+                            <TextView
+                                android:id="@+id/falDesc"
+                                android:layout_width="match_parent"
+                                android:layout_height="0dp"
+                                app:layout_constraintVertical_weight="1.5"
+                                android:gravity="bottom|center"
+                                android:text="Examined"
+                                android:textStyle="bold"
+                                android:textSize="22sp"
+                                android:textColor="@color/white"
+                                app:layout_constraintTop_toTopOf="parent"
+                                app:layout_constraintBottom_toTopOf="@id/falCont"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintEnd_toEndOf="parent">
+                            </TextView>
+                            <TextView
+                                android:id="@+id/falCont"
+                                android:layout_width="match_parent"
+                                android:layout_height="0dp"
+                                app:layout_constraintVertical_weight="3"
+                                android:gravity="top|center"
+                                android:text="..."
+                                android:textStyle="bold"
+                                android:textSize="40sp"
+                                android:textColor="@color/white"
+                                app:layout_constraintTop_toBottomOf="@id/falDesc"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintEnd_toEndOf="parent">
+                            </TextView>
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+                </com.google.android.material.card.MaterialCardView>
+
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/vulView"
+                    android:layout_marginStart="8dp"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    app:cardBackgroundColor="@color/panel4"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/falView"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:cardCornerRadius="15sp">
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:id="@+id/vulHead"
+                            android:layout_width="match_parent"
+                            app:layout_constraintVertical_weight="2"
+                            android:layout_height="0dp"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintBottom_toTopOf="@id/vulBod"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent">
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:gravity="center"
+                                android:text="Vulnerable"
+                                android:textStyle="bold"
+                                android:textSize="20sp"
+                                android:textColor="@color/white"
+                                app:layout_constraintTop_toTopOf="parent"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintEnd_toEndOf="parent">
+                            </TextView>
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:id="@+id/vulBod"
+                            android:layout_width="match_parent"
+                            app:layout_constraintVertical_weight="4"
+                            android:layout_height="0dp"
+                            app:layout_constraintTop_toBottomOf="@id/vulHead"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent">
+
+                            <TextView
+                                android:id="@+id/vulDesc"
+                                android:layout_width="match_parent"
+                                android:layout_height="0dp"
+                                app:layout_constraintVertical_weight="1.5"
+                                android:gravity="bottom|center"
+                                android:text="Estimated"
+                                android:textStyle="bold"
+                                android:textSize="22sp"
+                                android:textColor="@color/white"
+                                app:layout_constraintTop_toTopOf="parent"
+                                app:layout_constraintBottom_toTopOf="@id/vulCont"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintEnd_toEndOf="parent">
+                            </TextView>
+                            <TextView
+                                android:id="@+id/vulCont"
+                                android:layout_width="match_parent"
+                                android:layout_height="0dp"
+                                app:layout_constraintVertical_weight="3"
+                                android:gravity="top|center"
+                                android:text="..."
+                                android:textStyle="bold"
+                                android:textSize="40sp"
+                                android:textColor="@color/white"
+                                app:layout_constraintTop_toBottomOf="@id/vulDesc"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintEnd_toEndOf="parent">
+                            </TextView>
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+                </com.google.android.material.card.MaterialCardView>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/dDView"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_marginTop="8dp"
+                app:layout_constraintTop_toBottomOf="@id/uDView"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent">
+
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/gBView"
+                    android:layout_marginEnd="8dp"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    app:cardBackgroundColor="@color/panel4"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toStartOf="@id/fPView"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:cardCornerRadius="15sp">
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:id="@+id/gBHead"
+                            android:layout_width="match_parent"
+                            app:layout_constraintVertical_weight="2"
+                            android:layout_height="0dp"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintBottom_toTopOf="@id/gBBod"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent">
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:gravity="center"
+                                android:text="Gulayan sa Bakuran"
+                                android:textStyle="bold"
+                                android:textSize="18sp"
+                                android:textColor="@color/white"
+                                app:layout_constraintTop_toTopOf="parent"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintEnd_toEndOf="parent">
+                            </TextView>
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:id="@+id/gBBod"
+                            android:layout_width="match_parent"
+                            app:layout_constraintVertical_weight="4"
+                            android:layout_height="0dp"
+                            app:layout_constraintTop_toBottomOf="@id/gBHead"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent">
+
+                            <TextView
+                                android:id="@+id/gBDesc"
+                                android:layout_width="match_parent"
+                                android:layout_height="0dp"
+                                app:layout_constraintVertical_weight="1.5"
+                                android:gravity="bottom|center"
+                                android:text="Beneficiaries"
+                                android:textStyle="bold"
+                                android:textSize="22sp"
+                                android:textColor="@color/white"
+                                app:layout_constraintTop_toTopOf="parent"
+                                app:layout_constraintBottom_toTopOf="@id/gBCont"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintEnd_toEndOf="parent">
+                            </TextView>
+                            <TextView
+                                android:id="@+id/gBCont"
+                                android:layout_width="match_parent"
+                                android:layout_height="0dp"
+                                app:layout_constraintVertical_weight="3"
+                                android:gravity="top|center"
+                                android:text="..."
+                                android:textStyle="bold"
+                                android:textSize="40sp"
+                                android:textColor="@color/white"
+                                app:layout_constraintTop_toBottomOf="@id/gBDesc"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintEnd_toEndOf="parent">
+                            </TextView>
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+                </com.google.android.material.card.MaterialCardView>
+
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/fPView"
+                    android:layout_marginStart="8dp"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    app:cardBackgroundColor="@color/panel4"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/gBView"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:cardCornerRadius="15sp">
+
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:id="@+id/fPHead"
+                            android:layout_width="match_parent"
+                            app:layout_constraintVertical_weight="2"
+                            android:layout_height="0dp"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintBottom_toTopOf="@id/fPBod"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent">
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:gravity="center"
+                                android:text="Feeding Program"
+                                android:textStyle="bold"
+                                android:textSize="18sp"
+                                android:textColor="@color/white"
+                                app:layout_constraintTop_toTopOf="parent"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintEnd_toEndOf="parent">
+                            </TextView>
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:id="@+id/fPBod"
+                            android:layout_width="match_parent"
+                            app:layout_constraintVertical_weight="4"
+                            android:layout_height="0dp"
+                            app:layout_constraintTop_toBottomOf="@id/fPHead"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent">
+
+                            <TextView
+                                android:id="@+id/fPDesc"
+                                android:layout_width="match_parent"
+                                android:layout_height="0dp"
+                                app:layout_constraintVertical_weight="1.5"
+                                android:gravity="bottom|center"
+                                android:text="Beneficiaries"
+                                android:textStyle="bold"
+                                android:textSize="22sp"
+                                android:textColor="@color/white"
+                                app:layout_constraintTop_toTopOf="parent"
+                                app:layout_constraintBottom_toTopOf="@id/fPCont"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintEnd_toEndOf="parent">
+                            </TextView>
+
+                            <TextView
+                                android:id="@+id/fPCont"
+                                android:layout_width="match_parent"
+                                android:layout_height="0dp"
+                                android:gravity="top|center"
+                                android:text="..."
+                                android:textColor="@color/white"
+                                android:textSize="40sp"
+                                android:textStyle="bold"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintHorizontal_bias="0.0"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toBottomOf="@id/fPDesc"
+                                app:layout_constraintVertical_weight="3"></TextView>
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+                </com.google.android.material.card.MaterialCardView>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</FrameLayout>

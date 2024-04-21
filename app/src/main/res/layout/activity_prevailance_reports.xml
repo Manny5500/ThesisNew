@@ -1,0 +1,263 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/nutriassist_bg_"
+    tools:context=".Prevailance_Reports">
+
+    <View
+        android:id="@+id/up_View"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:background="@drawable/rounder_corner_only_two_down"
+        android:backgroundTint="#51ADE5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/down_View"
+        app:layout_constraintVertical_weight="0.87">
+    </View>
+
+
+    <View
+        android:id="@+id/down_View"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/up_View"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintVertical_weight="2">
+
+    </View>
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/thisMonthView"
+        android:layout_width="0dp"
+        android:layout_height="120dp"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="5dp"
+        app:layout_constraintEnd_toStartOf="@+id/increasedView"
+        app:layout_constraintTop_toBottomOf="@+id/up_View"
+        app:layout_constraintBottom_toTopOf="@+id/down_View"
+        app:layout_constraintVertical_weight="2"
+        app:cardBackgroundColor="@color/white"
+        app:cardCornerRadius="15sp"
+        app:cardElevation="10sp">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="10sp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:orientation="vertical">
+                <TextView
+                    android:id="@+id/textThisMonth"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="This Month"
+                    android:textColor="#51ADE5"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    />
+
+                <TextView
+                    android:id="@+id/textDataThisMonth"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/textThisMonth"
+                    android:layout_centerHorizontal="true"
+                    android:gravity="center"
+                    android:text="255"
+                    android:textSize="30sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+        </RelativeLayout>
+
+
+    </com.google.android.material.card.MaterialCardView>
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/increasedView"
+        android:layout_width="0dp"
+        android:layout_height="120dp"
+        android:layout_marginStart="5dp"
+        android:layout_marginEnd="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/thisMonthView"
+        app:layout_constraintTop_toTopOf="@+id/thisMonthView"
+        app:layout_constraintBottom_toBottomOf="@+id/thisMonthView"
+        app:layout_constraintVertical_weight="2"
+        app:cardBackgroundColor="@color/white"
+        app:cardCornerRadius="15sp"
+        app:cardElevation="10sp">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="10sp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:orientation="vertical">
+                <TextView
+                    android:id="@+id/textIncreased"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="Prevalance (%)"
+                    android:textColor="#51ADE5"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    />
+
+                <TextView
+                    android:id="@+id/textDataIncreased"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/textDataIncreased"
+                    android:layout_centerHorizontal="true"
+                    android:gravity="center"
+                    android:text="+25(50%)"
+                    android:textSize="30sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+
+        </RelativeLayout>
+
+
+    </com.google.android.material.card.MaterialCardView>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/textDateLayout"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="5dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="0dp"
+        android:hint="Date"
+        android:textColorHint="@color/white"
+        android:inputType="text"
+        app:boxStrokeWidth="0dp"
+        app:endIconTint="@color/white"
+        style="@style/Widget.Material3.TextInputLayout.FilledBox.Dense.ExposedDropdownMenu"
+        app:layout_constraintBottom_toTopOf="@id/textPrevailance"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/textTypeLayout">
+
+        <com.google.android.material.textfield.MaterialAutoCompleteTextView
+            android:id="@+id/textDate"
+            android:textColor="@color/white"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:inputType="textCapSentences"
+            android:textSize="18sp"
+            android:focusable = "false"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:textStyle="bold"
+            android:background="@android:color/transparent"
+            app:layout_constraintStart_toStartOf="parent" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/textTypeLayout"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="10dp"
+        android:layout_marginStart="5dp"
+        android:hint="Type"
+        android:textColorHint="@color/white"
+        android:inputType="text"
+        app:boxStrokeWidth="0dp"
+        app:endIconTint="@color/white"
+        style="@style/Widget.Material3.TextInputLayout.FilledBox.Dense.ExposedDropdownMenu"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/textDateLayout"
+        app:layout_constraintTop_toTopOf="@+id/textDateLayout">
+
+        <com.google.android.material.textfield.MaterialAutoCompleteTextView
+            android:textColor="@color/white"
+            android:id="@+id/textType"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:inputType="textCapSentences"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:focusable = "false"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:background="@android:color/transparent"
+            app:layout_constraintStart_toStartOf="parent" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+
+    <TextView
+        android:textColor="@color/white"
+        android:id="@+id/textPrevailance"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="PREVALENCE REPORT"
+        android:textSize="27sp"
+        android:textStyle="bold"
+        android:gravity="center"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textDateLayout"
+        app:layout_constraintBottom_toTopOf="@id/textTypeTitle"/>
+
+    <TextView
+        android:textColor="@color/white"
+        android:id="@+id/textTypeTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Stunted and Severe Stunted"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:gravity="center"
+        app:layout_constraintBottom_toTopOf="@id/thisMonthView"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textPrevailance"/>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/barangayRecycler"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="0dp"
+        android:background="#90FFFFFF"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.526"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/thisMonthView"
+        app:layout_constraintVertical_bias="0.157" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/floatingActionButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="40dp"
+        android:clickable="true"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.954"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/pdf_ic"
+        app:tint="@color/white"
+        app:maxImageSize="50dp"
+        app:backgroundTint="#51ADE5" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

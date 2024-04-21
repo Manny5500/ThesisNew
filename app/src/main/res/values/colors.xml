@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="colorLightBlue">#3498db</color>
+    <color name="colorDarkBlue">#2980b9</color>
+        <color name="background1">#FF8080</color>
+        <color name="background2">#FFCF96</color>
+        <color name="background3">#F6FDC3</color>
+        <color name="background4">#CDFAD5</color>
+    <color name="viola">#6854a4</color>
+    <color name="themeup">#F48024</color>
+    <color name="blueColor">#51ADE5</color>
+    <color name="redColor">#FF6961</color>
+    <color name="greenColor">#77DD77</color>
+    <color name="orange1">#FF7000</color>
+    <color name="orange2">#FFAC4A</color>
+    <color name="orange3">#FFE9C9</color>
+    <color name="orange4">#F9C87C</color>
+    <color name="red1">#F8858B</color>
+    <color name="red2">#FF6663</color>
+    <color name="red3">#E54C38</color>
+    <color name="red4">#C23A22</color>
+    <color name="green1">#0E361C</color>
+    <color name="green2">#19541F</color>
+    <color name="green3">#446C48</color>
+    <color name="green4">#7C9060</color>
+    <color name="violet1">#bf8bff</color>
+    <color name="violet2">#cca3ff</color>
+    <color name="violet3">#dabcff</color>
+    <color name="violet4">#e5d0ff</color>
+    <color name="panel1">#FF70C8</color>
+    <color name="panel2">#00BF63</color>
+    <color name="panel3">#FF914D</color>
+    <color name="panel4">#6E80DB</color>
+    <color name="greenColor2">#32BA7B</color>
+    <color name="dColor1">#f2bae4</color>
+    <color name="dColor2">#dfbbda</color>
+    <color name="dColor3">#896790</color>
+    <color name="dColor4">#bfadcc</color>
+
+
+
+</resources>

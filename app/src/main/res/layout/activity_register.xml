@@ -1,0 +1,382 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/nutriassist_bg_"
+    tools:context=".Register">
+
+
+    <TextView
+        android:id="@+id/txtRole3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="176dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="177dp"
+        android:text="SIGN UP"
+        android:textSize="30sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.486"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/textChildfirstNameLayout"
+        android:layout_width="match_parent"
+        android:layout_height="59dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginEnd="10dp"
+        android:hint="First Name"
+        android:inputType="text"
+        style="@style/Widget.Material3.TextInputLayout.FilledBox.Dense"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtRole3">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:background="#E6FFFFFF"
+            android:id="@+id/textChildfirstName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textCapSentences"
+            android:textSize="18sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txtTitleChild"/>
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/textChildMiddleNameLayout"
+        android:layout_width="0dp"
+        android:layout_height="59dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="5dp"
+        android:layout_marginTop="15dp"
+        android:hint="Middle Name"
+        android:inputType="text"
+        style="@style/Widget.Material3.TextInputLayout.FilledBox.Dense"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/textChildLastNameLayout"
+        app:layout_constraintTop_toBottomOf="@+id/textChildfirstNameLayout">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:background="#E6FFFFFF"
+            android:id="@+id/textChildMiddleName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textCapSentences"
+            android:textSize="18sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/textChildLastNameLayout"
+        android:layout_width="0dp"
+        android:layout_height="59dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginStart="5dp"
+        android:hint="Last Name"
+        android:inputType="text"
+        style="@style/Widget.Material3.TextInputLayout.FilledBox.Dense"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/textChildMiddleNameLayout"
+        app:layout_constraintTop_toTopOf="@+id/textChildMiddleNameLayout">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:background="#E6FFFFFF"
+            android:id="@+id/textChildLastName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textCapSentences"
+            android:textSize="18sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/textGmailLayout"
+        android:layout_width="match_parent"
+        android:layout_height="59dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        android:hint="Gmail"
+        android:inputType="text"
+        style="@style/Widget.Material3.TextInputLayout.FilledBox.Dense"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textChildLastNameLayout">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:background="#E6FFFFFF"
+            android:id="@+id/textGmail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textCapSentences"
+            android:textSize="18sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/textPasswordLayout"
+        android:layout_width="match_parent"
+        android:layout_height="59dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        android:hint="Password"
+        android:inputType="textPassword"
+        style="@style/Widget.Material3.TextInputLayout.FilledBox.Dense"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textGmailLayout">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:background="#E6FFFFFF"
+            android:id="@+id/textPassword"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textPassword"
+            android:textSize="18sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/textConfirmPasswordLayout"
+        android:layout_width="match_parent"
+        android:layout_height="59dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        android:hint="Confirm Password"
+        android:inputType="textPassword"
+        style="@style/Widget.Material3.TextInputLayout.FilledBox.Dense"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textPasswordLayout">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:background="#E6FFFFFF"
+            android:id="@+id/textFamilySize"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textPassword"
+            android:textSize="18sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+    </com.google.android.material.textfield.TextInputLayout>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text = "Birthdate"
+        android:layout_marginTop="10dp"
+        android:layout_marginStart="10dp"
+        android:textSize="18sp"
+        android:id="@+id/textDateLabel"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/textConfirmPasswordLayout"/>
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/textMonthLayout"
+        android:layout_width="0dp"
+        android:layout_height="59dp"
+        android:layout_marginEnd="5dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="15dp"
+        android:hint="Month"
+        android:inputType="text"
+        style="@style/Widget.Material3.TextInputLayout.FilledBox.Dense.ExposedDropdownMenu"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textDateLabel"
+        app:layout_constraintEnd_toStartOf="@+id/textDayLayout">
+
+        <com.google.android.material.textfield.MaterialAutoCompleteTextView
+            android:background="#E6FFFFFF"
+            android:id="@+id/textMonthlyIncome"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textCapSentences"
+            android:textSize="18sp"
+            android:focusable = "false"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/textDayLayout"
+        android:layout_width="0dp"
+        android:layout_height="59dp"
+        android:layout_marginEnd="5dp"
+        android:layout_marginStart="5dp"
+        android:hint="Day"
+        android:inputType="text"
+        style="@style/Widget.Material3.TextInputLayout.FilledBox.Dense.ExposedDropdownMenu"
+        app:layout_constraintTop_toTopOf="@+id/textMonthLayout"
+        app:layout_constraintStart_toEndOf="@+id/textMonthLayout"
+        app:layout_constraintEnd_toStartOf="@id/textYearLayout">
+
+        <com.google.android.material.textfield.MaterialAutoCompleteTextView
+            android:background="#E6FFFFFF"
+            android:id="@+id/txtEmployment1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textCapSentences"
+            android:textSize="18sp"
+            android:focusable = "false"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/textYearLayout"
+        android:layout_width="0dp"
+        android:layout_height="59dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginStart="5dp"
+        android:hint="Year"
+        android:inputType="text"
+        style="@style/Widget.Material3.TextInputLayout.FilledBox.Dense.ExposedDropdownMenu"
+        app:layout_constraintTop_toTopOf="@+id/textDayLayout"
+        app:layout_constraintStart_toEndOf="@+id/textDayLayout"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <com.google.android.material.textfield.MaterialAutoCompleteTextView
+            android:background="#E6FFFFFF"
+            android:id="@+id/txtEmployment2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textCapSentences"
+            android:textSize="18sp"
+            android:focusable = "false"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/textSexLayout"
+        android:layout_width="0dp"
+        android:layout_height="59dp"
+        android:layout_marginEnd="5dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="15dp"
+        android:hint="Sex"
+        android:inputType="text"
+        style="@style/Widget.Material3.TextInputLayout.FilledBox.Dense.ExposedDropdownMenu"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/textBarangayLayout"
+        app:layout_constraintTop_toBottomOf="@+id/textMonthLayout">
+
+        <com.google.android.material.textfield.MaterialAutoCompleteTextView
+            android:background="#E6FFFFFF"
+            android:id="@+id/textPregnant"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textCapSentences"
+            android:textSize="18sp"
+            android:focusable = "false"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/textBarangayLayout"
+        android:layout_width="0dp"
+        android:layout_height="59dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginStart="5dp"
+        android:hint="Barangay"
+        android:inputType="text"
+        style="@style/Widget.Material3.TextInputLayout.FilledBox.Dense.ExposedDropdownMenu"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/textSexLayout"
+        app:layout_constraintTop_toTopOf="@+id/textSexLayout">
+
+        <com.google.android.material.textfield.MaterialAutoCompleteTextView
+            android:background="#E6FFFFFF"
+            android:id="@+id/textBarangay"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textCapSentences"
+            android:textSize="18sp"
+            android:focusable = "false"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/texUserRoleLayout"
+        android:layout_width="0dp"
+        android:layout_height="59dp"
+        android:layout_marginEnd="5dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:hint="System Role"
+        android:inputType="text"
+        style="@style/Widget.Material3.TextInputLayout.FilledBox.Dense.ExposedDropdownMenu"
+        app:layout_constraintEnd_toStartOf="@+id/textContactLayout"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textSexLayout">
+
+        <com.google.android.material.textfield.MaterialAutoCompleteTextView
+            android:background="#E6FFFFFF"
+            android:id="@+id/textUserRole"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textCapSentences"
+            android:textSize="18sp"
+            android:focusable = "false"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/textContactLayout"
+        android:layout_width="0dp"
+        android:layout_height="59dp"
+        android:layout_marginStart="5dp"
+        android:layout_marginEnd="10dp"
+        android:hint="Contact No"
+        android:inputType="number"
+        style="@style/Widget.Material3.TextInputLayout.FilledBox.Dense"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/texUserRoleLayout"
+        app:layout_constraintTop_toTopOf="@+id/texUserRoleLayout">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:background="#E6FFFFFF"
+            android:id="@+id/textContact"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="number"
+            android:textSize="18sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+
+    <Button
+        android:id="@+id/buttonRegister"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="10dp"
+        android:backgroundTint="#51ADE5"
+        android:text="Register"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/texUserRoleLayout" />
+
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

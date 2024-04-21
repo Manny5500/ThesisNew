@@ -1,0 +1,138 @@
+<resources>
+    <string name="app_name" translatable="false">Nutri Assist</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment" translatable="false">Hello blank fragment</string>
+    <string name="switchSevere" translatable="false">Include Severe?</string>
+    <string-array name="barangay">
+        <item>Alipit</item>
+        <item>Malaking Ambling</item>
+        <item>Munting Ambling</item>
+        <item>Baanan</item>
+        <item>Balanac</item>
+        <item>Bucal</item>
+        <item>Buenavista</item>
+        <item>Bungkol</item>
+        <item>Buo</item>
+        <item>Burlungan</item>
+        <item>Cigaras</item>
+        <item>Ibabang Atingay</item>
+        <item>Ibabang Butnong</item>
+        <item>Ilayang Atingay</item>
+        <item>Ilayang Butnong</item>
+        <item>Ilog</item>
+        <item>Malinao</item>
+        <item>Maravilla</item>
+        <item>Poblacion</item>
+        <item>Sabang</item>
+        <item>Salasad</item>
+        <item>Tanawan</item>
+        <item>Tipunan</item>
+        <item>Halayhayin</item>
+    </string-array>
+
+    <string-array name="sex">
+        <item>Male</item>
+        <item>Female</item>
+    </string-array>
+    <string-array name="yes_or_no">
+        <item>Yes</item>
+        <item>No</item>
+    </string-array>
+    <string-array name="alipit">
+
+    </string-array>
+    <string-array name="malaking_ambling">
+
+    </string-array>
+    <string-array name="munting_ambling">
+
+    </string-array>
+    <string-array name="baanan">
+
+    </string-array>
+    <string-array name="balanac">
+
+    </string-array>
+    <string-array name="bukal">
+
+    </string-array>
+    <string-array name="buenavista">
+
+    </string-array>
+    <string-array name="bungkol">
+
+    </string-array>
+    <string-array name="buo">
+
+    </string-array>
+    <string-array name="burlungan">
+
+    </string-array>
+    <string-array name="cigaras">
+
+    </string-array>
+    <string-array name="ibabang_atingay">
+
+    </string-array>
+    <string-array name="ibabang_butnong">
+
+    </string-array>
+    <string-array name="ilayang_atingay">
+
+    </string-array>
+    <string-array name="ilayang_butnong">
+
+    </string-array>
+    <string-array name="ilog">
+
+    </string-array>
+    <string-array name="malinao">
+
+    </string-array>
+    <string-array name="maravilla">
+
+    </string-array>
+    <string-array name="poblacion">
+
+    </string-array>
+    <string-array name="sabang">
+
+    </string-array>
+    <string-array name="tanawan">
+
+    </string-array>
+    <string-array name="tipunan">
+
+    </string-array>
+    <string-array name="halayhayin">
+
+    </string-array>
+
+    <string-array name="malnourished_categories">
+        <item>Severe Underweight</item>
+        <item>Severe Underweight</item>
+        <item>Severe Stunted</item>
+        <item>Severe Stunted</item>
+        <item>Severe Stunted</item>
+        <item>Severe Wasted</item>
+        <item>Severe Wasted</item>
+    </string-array>
+    <string-array name="children_name">
+        <item>Scarlet Malaya</item>
+        <item>Carlita Kalayaan</item>
+        <item>Marlon Victoria</item>
+        <item>Juan Dela Cruz</item>
+        <item>Wala Lang</item>
+        <item>Try Lang</item>
+        <item>Edi Wow</item>
+    </string-array>
+    <string-array name="phone_number">
+        <item>09123456789</item>
+        <item>09987654321</item>
+        <item>09876543219</item>
+        <item>09765432198</item>
+        <item>09654321987</item>
+        <item>095432198765</item>
+        <item>094321987654</item>
+    </string-array>
+</resources>
