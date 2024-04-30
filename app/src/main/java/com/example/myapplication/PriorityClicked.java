@@ -31,6 +31,8 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QuerySnapshot;
 import com.itextpdf.text.Rectangle;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -164,12 +166,15 @@ public class PriorityClicked extends AppCompatActivity {
             age = String.valueOf(monthdiff);
             textAge.setText(String.valueOf(monthdiff)+ " months");
         } else {
-            Toast.makeText(this, "Failed to parse the date", Toast.LENGTH_SHORT).show();
+            textAge.setText("Age error");
         }
 
-        setTextSize(textAge,textStatus, textSex, textName, textWeight, textHeight, textParent, textEmail, textCellphone, textAddress);
-        setTextSize(textAgeLabel, textStatusLabel, textGenderLabel, textNameLabel, textWeightLabel, textHeightLabel, textParentLabel,
+        LayoutUtils.setTextSize(textAge,textStatus, textSex, textName, textWeight, textHeight, textParent, textEmail, textCellphone, textAddress);
+        LayoutUtils.setTextSize(textAgeLabel, textStatusLabel, textGenderLabel, textNameLabel, textWeightLabel, textHeightLabel, textParentLabel,
                 textEmailLabel, textCellphoneLabel, textAddressLabel);
+        float scale = getResources().getDisplayMetrics().density;
+        LayoutUtils.setMarginTop(scale, textAgeLabel,textStatusLabel, textGenderLabel, textNameLabel,
+                textWeightLabel, textHeightLabel, textParent, textEmail, textCellphone, textAddress);
 
         getPhoneNumber();
     }
@@ -240,20 +245,24 @@ public class PriorityClicked extends AppCompatActivity {
         }
     }
 
-    public void setTextSize(TextView... textViews){
-        for(TextView textView: textViews){
-            textView.setTextSize(18);
-        }
-    }
-
     public void createPdf(){
         Rectangle customsize = new Rectangle(
-                5.0f*72,
-                6.5f*72
+                8.5f*72,
+                5.5f*72
         );
-        String[] value = {name, sex, birthdate, age, referraldate, mothername, "", phoneNumber, municipality,
-                barangay, houseno};
+        App.child.setPhoneNumber(phoneNumber);
+        String outputFormat = "dd/M/yyyy";
+        try {
+            SimpleDateFormat inputFormat = new SimpleDateFormat("yyyy-MM-dd");
+            SimpleDateFormat outputFormatter = new SimpleDateFormat(outputFormat);
 
+            Date date = inputFormat.parse(referraldate);
+            referraldate = outputFormatter.format(date);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+
+        String[] value = {referraldate, age};
         PY_PdfUtils pyPdfUtils = new PY_PdfUtils(customsize, value);
         byte[] pdfBytes = pyPdfUtils.PdfSetter();
         showPdfDialog(pdfBytes);

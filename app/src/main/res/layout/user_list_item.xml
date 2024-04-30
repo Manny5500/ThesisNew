@@ -29,22 +29,23 @@
             android:textColor="?attr/colorPrimary"
             android:layout_toRightOf="@+id/Picture"
             android:id="@+id/list_item_name"/>
+        <TextView
+            android:layout_width = "match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/list_item_email"
+            android:layout_below="@id/list_item_name"
+            android:layout_toRightOf="@+id/Picture"
+            android:singleLine="true"
+            />
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/list_item_name"
+            android:layout_below="@+id/list_item_email"
             android:layout_toRightOf="@+id/Picture"
             android:id="@+id/list_item_barangay"/>
 
-        <TextView
-            android:layout_width = "match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/list_item_bio"
-            android:layout_below="@id/list_item_barangay"
-            android:layout_toRightOf="@+id/Picture"
-            android:singleLine="true"
-            />
+
     </RelativeLayout>
 
 </com.google.android.material.card.MaterialCardView>

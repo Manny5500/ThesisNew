@@ -59,7 +59,7 @@ public class Register extends AppCompatActivity {
                           "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"};
         String[] barangayCol = getResources().getStringArray(R.array.barangay);
         String[] sexCol = getResources().getStringArray(R.array.sex);
-        String[] roleCol = {"admin", "parent", "personnel"};
+        String[] roleCol = { "parent", "personnel"};
 
 
         fname = findViewById(R.id.textChildfirstName);

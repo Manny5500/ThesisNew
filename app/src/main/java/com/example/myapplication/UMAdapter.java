@@ -44,6 +44,7 @@ public class UMAdapter extends RecyclerView.Adapter<UMAdapter.ViewHolder> implem
         String lastNames = exampleList.get(position).getLastName();
         String imageUrl = exampleList.get(position).getImageUrl();
         String barangay = exampleList.get(position).getBarangay();
+        String email = exampleList.get(position).getEmail();
 
         Glide.with(holder.itemView.getContext())
                 .load(imageUrl)
@@ -56,6 +57,7 @@ public class UMAdapter extends RecyclerView.Adapter<UMAdapter.ViewHolder> implem
 
         holder.name.setText(firstNames + " " + lastNames);
         holder.barangay.setText(barangay);
+        holder.email.setText(email.toLowerCase());
         holder.itemView.setOnClickListener(view -> onItemClickListener.onClick(exampleList.get(position)));
     }
 
@@ -66,13 +68,14 @@ public class UMAdapter extends RecyclerView.Adapter<UMAdapter.ViewHolder> implem
 
     public static class ViewHolder extends RecyclerView.ViewHolder{
 
-        TextView name, barangay;
+        TextView name, barangay, email;
         CircleImageView image;
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             name = itemView.findViewById(R.id.list_item_name);
             image = itemView.findViewById(R.id.Picture);
             barangay = itemView.findViewById(R.id.list_item_barangay);
+            email = itemView.findViewById(R.id.list_item_email);
         }
     }
 

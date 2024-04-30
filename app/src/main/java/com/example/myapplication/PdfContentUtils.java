@@ -56,6 +56,13 @@ public class PdfContentUtils {
     }
 
 
+    public static void addTextRF(String text, Document document, int size, int font_type )throws DocumentException {
+        Paragraph paragraph = new Paragraph(text, new Font(Font.FontFamily.HELVETICA, size, font_type));
+        paragraph.setAlignment(paragraph.ALIGN_CENTER);
+        document.add(paragraph);
+    }
+
+
     public static void addText(String text, Document document,  boolean isBold, String align)throws DocumentException {
         Paragraph paragraph;
         if(isBold){

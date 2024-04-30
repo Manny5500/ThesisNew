@@ -38,7 +38,7 @@ public class Pdf_Utils {
         try {
             if (pdfUri != null) {
                 resolver.openOutputStream(pdfUri).write(byteArray);
-                Toast.makeText(context, "PDF Saved Successfully", Toast.LENGTH_SHORT).show();
+                Toast.makeText(context, "Saved Successfully at Documents/NutriAssist folder", Toast.LENGTH_SHORT).show();
             } else {
                 Toast.makeText(context, "Error Creating PDF", Toast.LENGTH_SHORT).show();
             }

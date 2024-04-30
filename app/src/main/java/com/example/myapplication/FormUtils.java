@@ -163,8 +163,8 @@ public class FormUtils {
         try {
             Date date = dateFormat.parse(bdate);
             int monthDiff = calculateMonthsDifference(date);
-            if(monthDiff<180 && role.equals("parent")){
-                Toast.makeText(context, "Parent must be at least 15 years old", Toast.LENGTH_SHORT).show();
+            if(monthDiff<144 && role.equals("parent")){
+                Toast.makeText(context, "Parent must be at least 12 years old", Toast.LENGTH_SHORT).show();
                 return false;
             } else if (monthDiff<216 && role.equals("personnel")) {
                 Toast.makeText(context, "Personnel must be at least 18 years old", Toast.LENGTH_SHORT).show();
