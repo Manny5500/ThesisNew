@@ -528,6 +528,7 @@
                     android:background="@drawable/textview_selector"
                     android:id="@+id/dateWeeks"
                     android:layout_width="0dp"
+                    app:layout_constraintHorizontal_weight="1"
                     android:layout_height="match_parent"
                     android:gravity="center"
                     android:text="Weeks"
@@ -538,6 +539,7 @@
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <TextView
+                    app:layout_constraintHorizontal_weight="1"
                     android:background="@drawable/textview_selector"
                     android:id="@+id/dateMonth"
                     android:layout_width="0dp"
@@ -550,6 +552,7 @@
                     app:layout_constraintTop_toTopOf="@id/dateWeeks" />
 
                 <TextView
+                    app:layout_constraintHorizontal_weight="1"
                     android:background="@drawable/textview_selector"
                     android:id="@+id/dateYear"
                     android:layout_width="0dp"
@@ -557,10 +560,76 @@
                     android:gravity="center"
                     android:text="Year"
                     android:textSize="20sp"
-                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintEnd_toStartOf="@id/dateOptions"
                     app:layout_constraintStart_toEndOf="@id/dateMonth"
                     app:layout_constraintTop_toTopOf="@id/dateMonth" />
+                <ImageView
+                    app:layout_constraintHorizontal_weight="0.3"
+                    android:src="@drawable/more"
+                    android:id="@+id/dateOptions"
+                    android:layout_width="0dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginBottom="8dp"
+                    android:layout_height="match_parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/dateYear"
+                    app:layout_constraintTop_toTopOf="@id/dateYear">
+                </ImageView>
             </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+        </com.google.android.material.card.MaterialCardView>
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/dateRangeTab"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginEnd="20dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginBottom="10dp"
+            app:cardCornerRadius="15sp">
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:background="@color/blueColor"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                >
+                <TextView
+                    app:layout_constraintHorizontal_weight="1"
+                    android:id="@+id/dateRange"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:text=""
+                    android:textColor="@color/white"
+                    android:textSize="20sp"
+                    app:layout_constraintEnd_toStartOf="@id/dateRangeOptions"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+                <ImageView
+                    app:layout_constraintHorizontal_weight="0.1"
+                    android:src="@drawable/more"
+                    android:tint="@color/white"
+                    android:id="@+id/dateRangeOptions"
+                    android:layout_width="0dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginBottom="8dp"
+                    android:layout_height="match_parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/dateRange"
+                    app:layout_constraintTop_toTopOf="@id/dateRange">
+                </ImageView>
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+
 
         </com.google.android.material.card.MaterialCardView>
 

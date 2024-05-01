@@ -125,7 +125,7 @@ public class PY_PdfUtils {
                 }
             }
             document.add(table);
-
+            PdfContentUtils.addTextRF("\n", document, 10, 0);
             PdfContentUtils.addTextRF("powered by NutriAssist", document, 9, 0);
             document.close();
         } catch (Exception e) {

@@ -1,5 +1,6 @@
 package com.example.myapplication;
 
+import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
@@ -15,9 +16,13 @@ import androidx.fragment.app.Fragment;
 
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.CompoundButton;
+import android.widget.ImageView;
+import android.widget.PopupMenu;
 import android.widget.Switch;
 import android.widget.TableLayout;
 import android.widget.TextView;
@@ -32,6 +37,7 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.card.MaterialCardView;
+import com.google.android.material.textfield.TextInputEditText;
 import com.google.firebase.FirebaseApp;
 import com.google.firebase.Timestamp;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -39,11 +45,15 @@ import com.google.firebase.firestore.Query;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 
+import java.text.DateFormat;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.time.ZoneId;
+import java.time.format.DateTimeFormatter;
+import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
@@ -60,14 +70,21 @@ public class fragmentReports extends Fragment {
 
     TextView dateWeek, dateMonth, dateYear, labelTotalCase,
             labelObservation, categorySeeMore, genderSeeMore,
-    barangaySeeMore, agesSeeMore ;
+    barangaySeeMore, agesSeeMore, dateRange, labelTitle ;
 
+    ImageView dateOptions, dateRangeOptions;
+
+    MaterialCardView dateTab, dateRangeTab;
+
+    int duration2;
 
     Switch switchToggle;
     private static String periodType = "week";
     private static String switchStatus = "off";
     int duration = 6;
     ArrayList<Timestamp> timestampArrayList;
+
+    String fromValue, toValue;
 
     public void onAttach(Context context) {
         super.onAttach(context);
@@ -87,13 +104,22 @@ public class fragmentReports extends Fragment {
         dateYear = view.findViewById(R.id.dateYear);
         labelTotalCase = view.findViewById(R.id.labelTotalCase);
         labelObservation = view.findViewById(R.id.labelObservation);
+        labelTitle = view.findViewById(R.id.labelTitle);
         switchToggle = view.findViewById(R.id.switchToggle);
         categorySeeMore = view.findViewById(R.id.categorySeeMore);
         genderSeeMore = view.findViewById(R.id.genderSeeMore);
         barangaySeeMore = view.findViewById(R.id.barangaySeeMore);
         agesSeeMore = view.findViewById(R.id.agesSeeMore);
+        dateRange = view.findViewById(R.id.dateRange);
+        dateRangeOptions = view.findViewById(R.id.dateRangeOptions);
+        dateOptions = view.findViewById(R.id.dateOptions);
+        dateTab = view.findViewById(R.id.dateTab);
+        dateRangeTab = view.findViewById(R.id.dateRangeTab);
+
+        dateRangeTab.setVisibility(View.GONE);
 
         timestampArrayList = new ArrayList<>();
+        periodType = "week";
 
         seeMoreEvents();
 
@@ -101,6 +127,7 @@ public class fragmentReports extends Fragment {
         setPressed(dateWeek);
         configData(duration);
         final Drawable defaultBackground = ContextCompat.getDrawable(requireContext(), R.drawable.textview_default_background);
+
 
         periodEvents();
 
@@ -115,9 +142,168 @@ public class fragmentReports extends Fragment {
                 configData(duration);
             }
         });
+
+        dateOptionsEvent();
+        dateRangeOptionsEvent();
+
         return view;
     }
 
+    private void dateOptionsEvent(){
+        dateOptions.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showDialog();
+            }
+        });
+    }
+
+    private void dateRangeOptionsEvent(){
+        dateRangeOptions.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showPopupMenu(v);
+            }
+        });
+    }
+
+
+    private void showPopupMenu(View view) {
+        PopupMenu popupMenu = new PopupMenu(requireContext(), view);
+        popupMenu.getMenuInflater().inflate(R.menu.datemenu, popupMenu.getMenu());
+
+        popupMenu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
+            @Override
+            public boolean onMenuItemClick(MenuItem item) {
+                int id=item.getItemId();
+                if(id== R.id.menu_item_1){
+                    dateRangeTab.setVisibility(View.GONE);
+                    dateTab.setVisibility(View.VISIBLE);
+                    setDateWeek();
+                    dateRange.setText("");
+                    return true;
+                }else if(id==R.id.menu_item_2){
+                    dateRangeTab.setVisibility(View.GONE);
+                    dateTab.setVisibility(View.VISIBLE);
+                    setDateMonth();
+                    dateRange.setText("");
+                    return true;
+                }else if(id==R.id.menu_item_3){
+                    dateRangeTab.setVisibility(View.GONE);
+                    dateTab.setVisibility(View.VISIBLE);
+                    setDateYear();
+                    dateRange.setText("");
+                    return true;
+                }else if(id==R.id.menu_item_4){
+                    showDialog();
+                    return true;
+                } else{
+                    return false;
+                }
+            }
+        });
+
+        popupMenu.show();
+    }
+
+    private void showDialog(){
+        final Dialog dialog = new Dialog(requireContext());
+        dialog.setContentView(R.layout.dialog_assign);
+        dialog.show();
+        Button set = dialog.findViewById(R.id.btnSet);
+        Button cancel = dialog.findViewById(R.id.btnCancel);
+        TextInputEditText from = dialog.findViewById(R.id.dateFrom);
+        TextInputEditText to = dialog.findViewById(R.id.dateTo);
+        TextView title = dialog.findViewById(R.id.title);
+        title.setText("Set Date");
+        FormUtils.dateClicked(from, requireContext());
+        FormUtils.dateClicked(to, requireContext());
+
+
+        set.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                fromValue = from.getText().toString().trim();
+                toValue = to.getText().toString().trim();
+
+                dialog.dismiss();
+                if(fromValue.equals("") || toValue.equals("")){
+                    Toast.makeText(applicationContext, "Please Select Date", Toast.LENGTH_SHORT).show();
+                }else if(!fromValue.equals("") && !assessFromDate()){
+
+                }else if(!toValue.equals("") && !assessToDate()){
+                } else{
+                    dateRange.setText(from.getText().toString().trim() + " - " + to.getText().toString().trim());
+                    dateRangeTab.setVisibility(View.VISIBLE);
+                    dateTab.setVisibility(View.GONE);
+                    setDateCustom();
+                }
+
+            }
+        });
+
+
+        cancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialog.dismiss();
+            }
+        });
+    }
+
+    private boolean assessFromDate(){
+        SimpleDateFormat dateFormat = new SimpleDateFormat("d/M/yyyy");
+        try {
+            Date date = dateFormat.parse(fromValue);
+            Date comparisonDate = dateFormat.parse("1/1/2023");
+            if (date.before(comparisonDate)) {
+                Toast.makeText(applicationContext, "Minimum Date is January 1, 2023", Toast.LENGTH_SHORT).show();
+                return false;
+            }
+        } catch (java.text.ParseException e) {
+            e.printStackTrace();
+        }
+
+        try {
+            Date date = dateFormat.parse(fromValue);
+            Date comparisonDate = new Date();
+            if (date.after(comparisonDate)) {
+                Toast.makeText(applicationContext, "From Date is greater than current Date", Toast.LENGTH_SHORT).show();
+                return false;
+            }
+        } catch (java.text.ParseException e) {
+            e.printStackTrace();
+        }
+
+        return true;
+    }
+
+    private boolean assessToDate(){
+        SimpleDateFormat dateFormat = new SimpleDateFormat("d/M/yyyy");
+        try {
+            Date date = dateFormat.parse(toValue);
+            Date comparisonDate = new Date();
+            if (date.after(comparisonDate)) {
+                Toast.makeText(applicationContext, "End Date is greater than current Date", Toast.LENGTH_SHORT).show();
+                return false;
+            }
+        } catch (java.text.ParseException e) {
+            e.printStackTrace();
+        }
+
+        try {
+            Date date = dateFormat.parse(toValue);
+            Date comparisonDate = dateFormat.parse("1/1/2023");
+            if (date.before(comparisonDate)) {
+                Toast.makeText(applicationContext, "Minimum Date is January 1, 2023", Toast.LENGTH_SHORT).show();
+                return false;
+            }
+        } catch (java.text.ParseException e) {
+            e.printStackTrace();
+        }
+        return true;
+    }
     private void seeMoreEvents(){
         categorySeeMore.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -125,6 +311,10 @@ public class fragmentReports extends Fragment {
                 Intent intent = new Intent(getActivity(), casesCharts.class);
                 intent.putParcelableArrayListExtra("timestampArrayList", timestampArrayList);
                 intent.putExtra("periodType", periodType);
+                if(periodType.equals("custom")){
+                    intent.putExtra("toValue", toValue);
+                    intent.putExtra("duration", duration);
+                }
                 startActivity(intent);
             }
         });
@@ -158,38 +348,68 @@ public class fragmentReports extends Fragment {
         dateWeek.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                setPressed(dateWeek);
-                periodType = "week";
-                duration = 6;
-                configData(duration);
-                switchToggle.setVisibility(View.GONE);
+                setDateWeek();
             }
         });
 
         dateMonth.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                setPressed(dateMonth);
-                periodType = "month";
-                duration = 29;
-                configData(duration);
-                switchToggle.setVisibility(View.VISIBLE);
-                switchToggle.setText("Whole Month");
+               setDateMonth();
             }
         });
 
         dateYear.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                setPressed(dateYear);
-                periodType = "year";
-                duration = 364;
-                configData(duration);
-                switchToggle.setVisibility(View.GONE);
-
+                setDateYear();
             }
         });
     }
+
+    private void setDateWeek(){
+        setPressed(dateWeek);
+        periodType = "week";
+        duration = 6;
+        configData(duration);
+        switchToggle.setVisibility(View.GONE);
+    }
+    private void setDateMonth(){
+        setPressed(dateMonth);
+        periodType = "month";
+        duration = 29;
+        configData(duration);
+        switchToggle.setVisibility(View.VISIBLE);
+        switchToggle.setText("Whole Month");
+    }
+    private void setDateYear(){
+        setPressed(dateYear);
+        periodType = "year";
+        duration = 364;
+        configData(duration);
+        switchToggle.setVisibility(View.GONE);
+    }
+
+    private void setDateCustom(){
+        periodType = "custom";
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("d/M/yyyy");
+
+        LocalDate date1 = LocalDate.parse(fromValue, formatter);
+        LocalDate date2 = LocalDate.parse(toValue, formatter);
+
+        int daysDifference = (int) ChronoUnit.DAYS.between(date1, date2);
+        duration = daysDifference;
+        configDataCustom(duration);
+        switchToggle.setVisibility(View.GONE);
+    }
+
+    private void configDataCustom(long duration) {
+        String[] barangay = getResources().getStringArray(R.array.barangay);
+        timestampArrayList = CDAUtils.createDate(duration, periodType, toValue);
+        displayData(timestampArrayList, barangay, duration);
+    }
+
+
     private void configData(long duration){
         String[] barangay = getResources().getStringArray(R.array.barangay);
         timestampArrayList = DateParser.createDate(duration, periodType);
@@ -209,7 +429,13 @@ public class fragmentReports extends Fragment {
                             GetSexAgeStats(task, childrenList);
 
                             Map<String, Integer> aggregatedData = new LinkedHashMap<>();
-                            ArrayList<Date> startCurrentDate = DateParser.createCurrentStartDate(duration, periodType);
+                            ArrayList<Date> startCurrentDate = new ArrayList<>();
+                            if(periodType.equals("custom")){
+                                startCurrentDate = CDAUtils.createCurrentStartDate(duration, periodType, toValue);
+                            }else{
+                                startCurrentDate = DateParser.createCurrentStartDate(duration, periodType);
+
+                            }
 
                             if(periodType.equals("year")){
                                 aggregatedData = aggregateDataByMonth(childrenList, startCurrentDate.get(1), startCurrentDate.get(0));
@@ -222,6 +448,27 @@ public class fragmentReports extends Fragment {
                             int currentrecord = 0;
                             for (Map.Entry<String, Integer> entry : aggregatedData.entrySet()) {
                                 currentrecord = currentrecord + entry.getValue();
+                            }
+
+                            Calendar calendar = Calendar.getInstance();
+                            calendar.setTime(startCurrentDate.get(2));
+                            calendar.add(Calendar.DAY_OF_YEAR, 1);
+
+                            Date newDate = calendar.getTime();
+
+                            SimpleDateFormat dateFormat = new SimpleDateFormat("MMMM d, yyyy");
+                            String endDate = dateFormat.format(startCurrentDate.get(0));
+                            String startDate = dateFormat.format(newDate);
+                            SimpleDateFormat monthFormat = new SimpleDateFormat("MMMM  yyyy");
+                            String monthDate = monthFormat.format(startCurrentDate.get(0));
+                            SimpleDateFormat yearFormat = new SimpleDateFormat("yyyy");
+                            String yearDate = yearFormat.format(startCurrentDate.get(0));
+                            if(periodType.equals("month")){
+                                labelTitle.setText("Malnourished Cases (" + monthDate + ")" );
+                            }else if(periodType.equals("year")){
+                                labelTitle.setText("Malnourished Cases (" + yearDate +  ")");
+                            }else{
+                                labelTitle.setText("Malnourished Cases (" + startDate + " - " + endDate + ")" );
                             }
 
                             getPreviousPeriod(timestampArrayList, currentrecord, aggregatedData);
@@ -506,6 +753,10 @@ public class fragmentReports extends Fragment {
     }
 
 
+
+
+
+
     private void getPreviousPeriod(ArrayList<Timestamp> timestampArrayList, int currentrecord, Map<String, Integer> aggregatedData){
         db.collection("children") .whereGreaterThanOrEqualTo("dateAdded", timestampArrayList.get(2))
                 .whereLessThanOrEqualTo("dateAdded", timestampArrayList.get(3))
@@ -528,10 +779,20 @@ public class fragmentReports extends Fragment {
                             if(currentrecord == observation){
                                 observeStatus = "Just as the same";
                             } else if (currentrecord > observation) {
-                                observeStatus = "" + withPercent + " more than previous " + periodType;
+                                if(periodType.equals("custom")){
+                                    observeStatus = withPercent + " more than previous " + duration + " days.";
+
+                                }else{
+                                    observeStatus = withPercent + " more than previous " + periodType;
+                                }
                                 colorNow = Color.parseColor("#FF0000");
                             } else if (currentrecord < observation){
-                                observeStatus = "" + withPercent + " less than previous " + periodType;
+                                if(periodType.equals("custom")){
+                                    observeStatus = withPercent + " less than previous " + duration + " days.";
+
+                                }else{
+                                    observeStatus = withPercent + " less than previous " + periodType;
+                                }
                                 colorNow = Color.parseColor("#097969");
                             }
 
@@ -539,7 +800,12 @@ public class fragmentReports extends Fragment {
                             labelObservation.setText(observeStatus);
                             labelObservation.setTextColor(colorNow);
 
-                            ArrayList<Date> startCurrentDate = DateParser.createCurrentStartDate(6,periodType);
+                            ArrayList<Date> startCurrentDate = new ArrayList<>();
+                            if(periodType.equals("custom")){
+                                startCurrentDate = CDAUtils.createCurrentStartDate(duration, periodType, toValue);
+                            }else{
+                                startCurrentDate = DateParser.createCurrentStartDate(6, periodType);
+                            }
                             Map<String, Integer> aggregatedData2 = new LinkedHashMap<>();
                             if(periodType.equals("year")){
                                 aggregatedData2 = aggregateDataByMonth(childrenList, startCurrentDate.get(3), startCurrentDate.get(2));

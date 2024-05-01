@@ -30,7 +30,7 @@ public class casesCharts extends AppCompatActivity {
 
     ArrayList<Timestamp> timestampArrayList;
 
-    String periodType;
+    static String periodType;
     private FirebaseFirestore db;
 
     int currentTotalCase, currentObserve, currentChart, currentTable;
@@ -47,6 +47,8 @@ public class casesCharts extends AppCompatActivity {
     int[] colors2;
 
     long duration;
+    
+    
 
     Switch switchToggleCases;
 
@@ -80,6 +82,9 @@ public class casesCharts extends AppCompatActivity {
             case "year":
                 duration = 364;
                 break;
+            case "custom":
+                duration = getIntent().getIntExtra("duration", 7);
+                break;
         }
         firstFetch();
     }
@@ -87,8 +92,9 @@ public class casesCharts extends AppCompatActivity {
     private static Map<String, Integer> aggregateDataByDay(List<Child> dataList,
                                                            Date startDate, Date currentDate) {
         String[] dateArray = DateParser.createDateArray(startDate, currentDate);
-        Map<String, Integer> aggregatedData = new LinkedHashMap<>();
 
+        Map<String, Integer> aggregatedData = new LinkedHashMap<>();
+        
         for (String day: dateArray){
             int count = 0;
             for(Child child: dataList){
@@ -179,7 +185,12 @@ public class casesCharts extends AppCompatActivity {
     private Map<String, Integer> getAggregatedData(int position1, int position2,
                                                    long duration, ArrayList<Child> filteredChildrenList){
         Map<String, Integer> aggregatedData = new LinkedHashMap<>();
-        ArrayList<Date> startCurrentDateNow = DateParser.createCurrentStartDate(duration,periodType);
+        ArrayList<Date> startCurrentDateNow = new ArrayList<>();
+        if(periodType.equals("custom")){
+            startCurrentDateNow = CDAUtils.createCurrentStartDate(duration, periodType, getIntent().getStringExtra("toValue"));
+        }else{
+            startCurrentDateNow = DateParser.createCurrentStartDate(duration,periodType);
+        }
         if(periodType.equals("year")){
             aggregatedData = aggregateDataByMonth(filteredChildrenList, startCurrentDateNow.get(position2),
                     startCurrentDateNow.get(position1));
@@ -224,10 +235,20 @@ public class casesCharts extends AppCompatActivity {
         if(currentRecord == observation){
             observeStatus = "Just as the same";
         } else if (currentRecord > observation) {
-            observeStatus = withPercent + " more than previous " + periodType;
+            if(periodType.equals("custom")){
+                observeStatus = withPercent + " more than previous " + duration + " days.";
+
+            }else{
+                observeStatus = withPercent + " more than previous " + periodType;
+            }
             colorNow = Color.parseColor("#FF0000");
         } else if (currentRecord < observation){
-            observeStatus = withPercent + " less than previous " + periodType;
+            if(periodType.equals("custom")){
+                observeStatus = withPercent + " less than previous " + duration + " days.";
+
+            }else{
+                observeStatus = withPercent + " less than previous " + periodType;
+            }
             colorNow = Color.parseColor("#097969");
         }
 

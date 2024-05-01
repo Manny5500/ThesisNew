@@ -76,6 +76,7 @@ public class DateParser {
         return currentTimestamp;
     }
 
+
     public static ArrayList<Timestamp> createDate(long duration, String periodType){
         Date currentDate = new Date();
         long daysInMillis = TimeUnit.DAYS.toMillis(duration);
@@ -121,6 +122,7 @@ public class DateParser {
 
         return  timestamps;
     }
+
 
     public static ArrayList<Date> yearlyPeriod(Date currentDate, Date startDate, Date previousStartDate,
                                                 Date elevenFiftyNine, Date previousDate, long oneDayMillis){
